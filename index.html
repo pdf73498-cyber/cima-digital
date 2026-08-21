@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cima Digital - Tu Visión Profesional</title>
+    <style>
+        :root {
+            --bg-dark: #0d0d0d;
+            --bg-card: #161616;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --text-light: #f5f5f5;
+            --text-muted: #a0a0a0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background-color: rgba(13, 13, 13, 0.95);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .logo-title {
+            color: var(--gold);
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 100px 5% 60px;
+            text-align: center;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(13, 13, 13, 1) 70%);
+        }
+
+        .hero h1 {
+            color: var(--gold);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .btn-wsp {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold) 0%, #aa820a 100%);
+            color: #000;
+            padding: 14px 32px;
+            font-weight: bold;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-wsp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        /* SERVICIOS INTERACTIVOS */
+        .services {
+            padding: 60px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .grid-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 12px;
+            padding: 30px;
+            cursor: pointer;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+
+        .card h3 {
+            color: var(--gold-light);
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* PERSONALIZADOR EN VIVO */
+        .customizer {
+            padding: 60px 5%;
+            background-color: #111;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .customizer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .controls {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .control-group {
+            margin-bottom: 25px;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--gold-light);
+        }
+
+        .color-options, .font-options {
+            display: flex;
+            gap: 15px;
+        }
+
+        .color-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            cursor: pointer;
+        }
+
+        .font-btn {
+            padding: 8px 16px;
+            background: #222;
+            color: #fff;
+            border: 1px solid var(--gold);
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .preview-box {
+            width: 300px;
+            height: 420px;
+            background: #000;
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            transition: all 0.3s ease;
+        }
+
+        /* MODAL EMERGENTE */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--gold);
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: var(--gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px 5%;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-title">CIMA DIGITAL</div>
+        <nav>
+            <a href="#servicios">Servicios</a>
+            <a href="#personalizador">Personalizador</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>CIMA DIGITAL</h1>
+        <p>Tu visión profesional. Creamos invitaciones interactivas, flyers publicitarios y páginas web profesionales a tu medida.</p>
+        <a href="https://wa.me/5493705247180?text=Hola%20Cima%20Digital,%20me%20gustaría%20solicitar%20una%20cotización." target="_blank" class="btn-wsp">Consultar por WhatsApp</a>
+    </section>
+
+    <section id="servicios" class="services">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="grid-services">
+            <div class="card" onclick="openModal('15 Años & Cumpleaños', 'Tarjetas digitales interactivas con música, cuenta regresiva, confirmación de asistencia por WhatsApp y ubicación en GPS.')">
+                <h3>15 Años y Cumpleaños</h3>
+                <p>Haz clic para ver detalles del servicio interactivo para eventos sociales.</p>
+            </div>
+            <div class="card" onclick="openModal('Flyers Comerciales', 'Diseño de piezas publicitarias dinámicas para redes sociales, promociones de productos y menúes digitales.')">
+                <h3>Flyers e Imagen Comercial</h3>
+                <p>Diseño gráfico estratégico para potenciar las ventas de tu negocio.</p>
+            </div>
+            <div class="card" onclick="openModal('Diseño de Páginas Web', 'Desarrollo de sitios web corporativos, landing pages de venta y plataformas interactivas con dominio propio.')">
+                <h3>Páginas Web Profesionales</h3>
+                <p>Presencia digital completa y adaptada a todos los dispositivos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="personalizador" class="customizer">
+        <h2 class="section-title">Personalizador de Estilos en Vivo</h2>
+        <div class="customizer-container">
+            <div class="controls">
+                <div class="control-group">
+                    <label>Elige la Paleta de Color:</label>
+                    <div class="color-options">
+                        <div class="color-btn" style="background: #d4af37;" onclick="changeColor('#d4af37')"></div>
+                        <div class="color-btn" style="background: #e91e63;" onclick="changeColor('#e91e63')"></div>
+                        <div class="color-btn" style="background: #00bcd4;" onclick="changeColor('#00bcd4')"></div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Estilo de Tipografía:</label>
+                    <div class="font-options">
+                        <button class="font-btn" onclick="changeFont('serif')">Elegante</button>
+                        <button class="font-btn" onclick="changeFont('sans-serif')">Moderna</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="preview" class="preview-box">
+                <h3 id="prev-title" style="color: #d4af37; font-family: serif;">Tu Evento / Negocio</h3>
+                <p id="prev-desc" style="font-size: 0.9rem; margin-top: 15px;">Así lucirá la estética de tu tarjeta o página web personalizada.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <p><strong>Cima Digital - Tu visión profesional</strong></p>
+        <p>Contacto: +54 9 370 524-7180</p>
+        <p style="margin-top: 15px; font-size: 0.8rem;">Precios a consultar según los requerimientos del proyecto.</p>
+    </footer>
+
+    <!-- MODAL -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 id="modal-title" style="color: var(--gold); margin-bottom: 15px;"></h3>
+            <p id="modal-desc" style="color: var(--text-muted); margin-bottom: 25px;"></p>
+            <a id="modal-wsp" href="#" target="_blank" class="btn-wsp">Consultar este Servicio</a>
+        </div>
+    </div>
+
+    <script>
+        function openModal(title, desc) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-desc').innerText = desc;
+            document.getElementById('modal-wsp').href = "https://wa.me/5493705247180?text=Hola%20Cima%20Digital,%20quiero%20consultar%20sobre:%20" + encodeURIComponent(title);
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function changeColor(color) {
+            document.getElementById('prev-title').style.color = color;
+            document.getElementById('preview').style.borderColor = color;
+        }
+
+        function changeFont(font) {
+            document.getElementById('prev-title').style.fontFamily = font;
+        }
+    </script>
+</body>
+</html>
